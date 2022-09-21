@@ -1,0 +1,374 @@
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+*{
+  scroll-behavior: smooth;
+}
+
+:root{
+  --main-color--:#ac50e5;
+  --hover-color--:#ac50e596;
+  --middle-color--: #4a83ff;
+  --blue-hover-color--:#4a83ffd8;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #272829;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-color--);
+}
+
+a:hover {
+
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+
+
+/*--------------------------------------------------------------
+# Home Section
+--------------------------------------------------------------*/
+#home {
+  width: 100%;
+  height: 100vh;
+  background: url("../img/svg_waves.png") top right no-repeat;
+  background-size:contain;
+  position: relative;
+}
+@media (min-width: 992px) {
+  #home {
+    padding-left: 160px;
+  }
+}
+#home:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#home h1 {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #000000;
+}
+#home p {
+  color: #000000;
+  margin: 15px 0 0 10px;
+  font-size: 26px;
+  font-family: "Poppins", sans-serif;
+}
+#home_span{
+  color: var(--main-color--);
+}
+
+
+@media (max-width: 992px) {
+  #home {
+    text-align: center;
+  }
+  #home h1 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  #home p {
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .humans_img img{
+    height: 30vh;
+  }
+
+}
+
+/*--------------------------------------------------------------
+# Main Section index page
+--------------------------------------------------------------*/
+#main{
+  height: 100vh;
+  text-align: justify;
+}
+
+#stemwijzerbtn button{
+  margin: 0 0 0 10px;
+}
+
+#stemwijzerbtn a{
+  color: #fff;
+}
+
+figure.card{
+  background-color: #f7f8f9;
+  box-shadow: 4px -4px 6.5px 4px rgba(221, 221, 221, 0.464);
+  border-radius: 20px;
+  padding: 3rem;
+  margin: 0 0 75px 0;
+}
+
+/*--------------------------------------------------------------
+# Main Section partijen page
+--------------------------------------------------------------*/
+#main{
+  height: auto;
+  text-align: justify;
+}
+
+/*--------------------------------------------------------------
+# cards
+--------------------------------------------------------------*/
+.blog_post {
+  background: #fff;
+  width: 210px;
+
+  border-radius: 10px;
+  box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+  position: relative;
+  margin: 10px;
+  text-align:left ;
+}
+
+
+.container_copy {
+  padding: 4rem 2rem 3rem 2rem;
+}
+
+.img_pod {
+  height: 110px;
+  width: 110px;
+  background: linear-gradient(90deg, #ff9966, #ff5e62);
+  z-index: 10;
+  box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+  border-radius: 100%;
+  position: absolute;
+  left: -10%;
+  top: -15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog_post img {
+  height: 8.3rem;
+  width: 8.3rem;
+  position: relative;
+  border-radius: 100%;
+  box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.blog_post h3 {
+  margin: 0 0 0.5rem 0;
+  color: #999;
+  font-size: 1rem;
+}
+
+.blog_post h1 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: #333;
+}
+
+.blog_post p {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #333;
+}
+@media (max-width: 992px) {
+  #main{
+    margin: 0 0 0 15px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Main Thema partijen page
+--------------------------------------------------------------*/
+
+
+
+.card-theme {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  perspective: 500px;
+  margin: 10px;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.card-theme:hover .content {
+  transform: rotateY( 180deg ) ;
+  transition: transform 0.5s;
+}
+
+.front{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  color: #03446A;
+  text-align: center;
+  backface-visibility: hidden; 
+}
+
+.back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  color: #03446A;
+  text-align: center;
+  font-size: 1em;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+
+.back p{
+  width: 80%;
+}
+
+.back {
+  background: #03446A;
+  color: white;
+  transform: rotateY( 180deg );
+}
+@media (max-width: 992px) {
+  .card-theme{
+    margin: 0 0 0 90px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Main stemwijzer page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# stemwijzer buttons
+--------------------------------------------------------------*/
+input[type ="radio"]{
+ display: none;
+ width: 100px;
+ height: 35px;
+}
+
+.buttons{
+  padding: 3rem;
+  margin: 0 0 75px 0;
+}
+
+.box1{
+  width: 100px;
+  height: 35px;
+  background-color: #44C662;
+  color: #fff;
+  border-radius: 5px;
+}
+.box1:hover{
+  background-color: #44c662ae;
+}
+.box2{
+  width: 100px;
+  height: 35px;
+  background-color: #F23A3A;
+  color: #fff;
+  border-radius: 5px;
+}
+.box2:hover{
+  background-color: #f23a3ab5;
+}
+
+
+/*--------------------------------------------------------------
+# stemwijzer standpunt
+--------------------------------------------------------------*/
+.standpunt{
+  width:900px;
+  height: 50vh;
+  background-color:#f7f8f9 ;
+  text-align: center;
+}
+.standpunt p{
+  font-size: 1.5em;
+}
+
+@media (max-width: 992px) {
+ .standpunt{
+  width: 500px;
+ }
+}
+
+/*--------------------------------------------------------------
+# stemwijzer progressbar
+--------------------------------------------------------------*/
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+  margin:0 0 50px 0;
+}
+
+#progressbar {
+  width: 0%;
+  height: 30px;
+  background-color: #1D1387;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+
+/*--------------------------------------------------------------
+# stemwijzer resulaat
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Home Section
+--------------------------------------------------------------*/
+#home_resultaat {
+  width: 100%;
+  height: 60vh;
+  background: url("../img/svg_waves.png") top right no-repeat;
+  background-size:contain;
+  position: relative;
+}
+@media (min-width: 992px) {
+  #home_resultaat {
+    padding-left: 160px;
+  }
+}
+#home_resultaat:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/*--------------------------------------------------------------
+# Main Section
+--------------------------------------------------------------*/
+
+#prgress{
+  width: 100%;
+  background-color: #ddd;
+  margin:0 0 50px 0;
+}

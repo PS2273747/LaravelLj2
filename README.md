@@ -2,9 +2,9 @@
 
 Git handleiding
 
-- git add .
-- git push
-- git commit -m "een message"
+- ``` git add . ```
+- ``` git push ```
+- ``` git commit -m "een message" ```
 
 *Do this from the root map of Laravel or stuff will go fucky wucky
 

@@ -15,16 +15,16 @@ Installation Tailwind Css Laravel:
 
 https://tailwindcss.com/docs/guides/laravel
 
-1: laravel new myprojectname
+1: ``` laravel new myprojectname ```
 
-2: cd myprojectname
+2: ``` cd myprojectname ```
 
-3: npm install -D tailwindcss postcss autoprefixer
+3: ``` npm install -D tailwindcss postcss autoprefixer ```
 
-4: npx tailwindcss init -p
+4: ``` npx tailwindcss init -p ```
 
 5: add this to the tailwind.config.js file ( can be found in the root of the project map):
-
+```
 
  module.exports = {
  
@@ -47,8 +47,9 @@ https://tailwindcss.com/docs/guides/laravel
   
 }
 
-
+```
 6: add this to the app.css file:
+```
 
 @tailwind base;
 
@@ -56,9 +57,11 @@ https://tailwindcss.com/docs/guides/laravel
 
 @tailwind utilities;
 
+```
+7: ``` npm run dev ``` 
+in gitbash or other terminal
 
-7: npm run dev in gitbash or other terminal
 
-
-8:  @vite('resources/css/app.css') don't forget to add this to the HTML in the header!
+8:  ``` @vite('resources/css/app.css') ```
+don't forget to add this to the HTML in the header!
 

@@ -1,4 +1,4 @@
-===============================
+=============================
 
 **Git handleiding**
 
@@ -9,9 +9,9 @@
 <sup> *Do this from the root map of Laravel Git or stuff will go fucky wucky </sup>
 
 
-===============================
+=============================
 
-** [Installation Tailwind Css Laravel:](https://tailwindcss.com/docs/guides/laravel) **
+[Installation Tailwind Css Laravel:](https://tailwindcss.com/docs/guides/laravel) 
 
 
 1: ``` laravel new myprojectname ```
@@ -22,7 +22,7 @@
 
 4: ``` npx tailwindcss init -p ```
 
-5: add this to the tailwind.config.js file ( can be found in the root of the project map):
+5: add this to the tailwind.config.js file (*can be found in the root of the project map*):
 ```
 
  module.exports = {
@@ -61,6 +61,7 @@
 in gitbash or other terminal
 
 
-8:  ``` @vite('resources/css/app.css') ```
-don't forget to add this to the HTML in the header!
+8:  add this to the html in your header
+``` @vite('resources/css/app.css') ```
+
 

@@ -1,16 +1,17 @@
-==================================
+===============================
 
-Git handleiding
+**Git handleiding**
 
 - ``` git add . ```
 - ``` git push ```
 - ``` git commit -m "een message" ```
 
-*Do this from the root map of Laravel Git or stuff will go fucky wucky
+<sup> *Do this from the root map of Laravel Git or stuff will go fucky wucky </sup>
 
 
-==================================
-[Installation Tailwind Css Laravel:](https://tailwindcss.com/docs/guides/laravel).
+===============================
+
+** [Installation Tailwind Css Laravel:](https://tailwindcss.com/docs/guides/laravel) **
 
 
 1: ``` laravel new myprojectname ```

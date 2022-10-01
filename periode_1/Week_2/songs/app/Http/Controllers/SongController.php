@@ -24,9 +24,11 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( Request $request)
     {
-        //
+          //Retrieve the name input field
+      $name = $request->input('name');
+      return view('createdsong',['name' => $name]);
     }
 
     /**
@@ -37,10 +39,9 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-         
-      //Retrieve the name input field
-      $name = $request->input('name');
-        return view('createdsong',['name' => $name]);
+        $name = $request->input('songName');
+        return view('storedSong',['name' => $name]);
+    
     }
 
 
@@ -62,9 +63,10 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $songs = ['Living on a prayer', 'Nothing else matters', 'Thunderstruck', 'Back in black', 'Ace of spades'];
+        return view('edit', ['songs' => $songs]);
     }
 
     /**

@@ -21,15 +21,18 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/songs', [SongController::class, 'index'])->Name('songs');
+Route::get('/index', [SongController::class, 'index']);
 
 
 
-Route::get('/songs/{id}',[SongController::class, 'show']);
+Route::get('/index/{id}',[SongController::class, 'show']);
 
 
 Route::get('/create', function () {
     return view('create');
 });
 
- Route::post('/song',[SongController::class, 'store']);
+ Route::post('/song',[SongController::class, 'create']);
+
+ Route::get('/edit', [SongController::class, 'edit']);
+ Route::post('/store',[SongController::class, 'store']);

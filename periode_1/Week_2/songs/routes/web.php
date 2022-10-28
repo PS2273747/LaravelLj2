@@ -35,4 +35,5 @@ Route::get('/create', function () {
  Route::post('/song',[SongController::class, 'create']);
 
  Route::get('/edit', [SongController::class, 'edit']);
+ 
  Route::post('/store',[SongController::class, 'store']);

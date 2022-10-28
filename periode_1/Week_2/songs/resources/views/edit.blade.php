@@ -29,8 +29,6 @@
 
   
   </table>
-
-
  </form>
  @endforeach
 </div>

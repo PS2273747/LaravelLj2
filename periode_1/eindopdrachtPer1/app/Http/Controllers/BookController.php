@@ -39,7 +39,7 @@ class BookController extends Controller
     {
           // Validation for required fields
           $request->validate([
-            'title'=>'required|max:100',
+            'title'=>'required|max:10',
             'author'=>'required|max:100'
         ]);
         // Getting values from the  form

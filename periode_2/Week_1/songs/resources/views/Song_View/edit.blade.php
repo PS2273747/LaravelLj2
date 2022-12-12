@@ -36,6 +36,33 @@
         
         <button type="submit" class="btn btn-blue">Update song</button>
       </form>
+      <div>
+            <!-- gekoppelde albums -->
+            @foreach($song->albums as $album)
+            {{$album->album_name}}
+            <form action="{{ route('songs.detach', [$song, $album]) }}" method="POST">
+              @csrf
+              <button type="submit" class="btn btn-blue">
+                 - 
+              </button>
+            </form>
+            <br>
+            @endforeach
+          </div>
+      
+          <div>
+            <!-- ongekoppelde albums -->
+            @foreach($albums as $album)
+            {{$album->album_name}}
+            <form action="{{ route('songs.attach', [$song, $album]) }}" method="POST">
+              @csrf
+              <button type="submit" class="btn btn-blue"> 
+                + 
+              </button>
+            </form>
+            <br>
+            @endforeach
+          </div>
   </div>
 </div>
 @endsection

@@ -15,4 +15,9 @@ class Band extends Model
         'founded',
         'active_till',
     ];
+
+    public function albums()
+    {
+        return $this->hasMany(Album::class);
+    }
 }

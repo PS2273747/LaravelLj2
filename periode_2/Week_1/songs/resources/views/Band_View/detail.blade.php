@@ -23,5 +23,20 @@
                     </a>
                 
         </div>
+        <div>
+            <div>
+            @foreach( $band->albums as $album)
+            <div>
+                {{$album->album_name}}
+            </div>
+            @endforeach
+          
+            </div>
+            
+            <div>
+<!-- koppelde albums -->
+            </div>
+
+        </div>
 
 @endsection

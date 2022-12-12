@@ -23,5 +23,17 @@
                     </a>
                 
         </div>
+        <div>
+            <div>
+                @foreach($album->songs()->get() as $song)
+                <div>
+                   {{ $song->song_name}}
+                </div>
+                @endforeach
+            </div>
+            <div>
+                <!-- ongekoppe;ld -->
+            </div>
+        </div>
 
 @endsection

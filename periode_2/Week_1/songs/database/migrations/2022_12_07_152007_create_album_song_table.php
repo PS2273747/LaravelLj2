@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('albums', function (Blueprint $table) {
+        Schema::create('album_song', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('band_id')->constrained();
-            $table->string('album_name');
-            $table->smallInteger('year')->nullable();
-            $table->smallInteger('times_sold');
-            $table->timestamps();
-            
+            $table->foreignId('album_id')->constrained();
+            $table->foreignId('song_id')->constrained();
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('albums');
+        Schema::dropIfExists('album_song');
     }
 };

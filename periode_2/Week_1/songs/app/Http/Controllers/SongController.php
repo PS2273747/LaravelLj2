@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Album;
+use App\Models\Band;
 use App\Models\Song;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,7 @@ class Songcontroller extends Controller
     public function create()
     {
         return view('Song_View.create');
+       
     }
 
     /**
@@ -75,8 +77,21 @@ class Songcontroller extends Controller
      */
     public function edit(Song $song)
     {
-       
-        return view('Song_View.edit', ['song' => $song]);
+        $albums = Album::wheredoesntHave('songs', function ($query) use ($song) {
+            $query->where('song_id', $song->id);  })->get();
+        return view('Song_View.edit', ['song' => $song, 'albums' => $albums] );
+   
+    }
+    public function attach(Song $song, Album $album )
+    {
+        $song->albums()->attach($album);
+        return redirect()->route('songs.edit', $song);
+    }
+    public function detach(Song $song, Album $album )
+    {
+        $song->albums()->detach($album);
+        return redirect()->route('songs.edit', $song);
+      
     }
 
     /**

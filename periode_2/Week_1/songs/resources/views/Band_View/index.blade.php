@@ -24,6 +24,7 @@
   <div class=" text-lg txtMakeup"> <a href="{{ route('bands.show', $band->id) }}">{{$band->genre}} </a> </div>
   <div class=" text-lg txtMakeup"> <a href="{{ route('bands.show', $band->id) }}">{{$band->founded}} </a> </div>
   <div class=" text-lg txtMakeup"> <a href="{{ route('bands.show', $band->id) }}">{{$band->active_till}} </a> </div>
+  
   @endforeach
 </div>
      <br>

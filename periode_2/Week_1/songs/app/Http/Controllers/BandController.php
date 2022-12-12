@@ -66,7 +66,7 @@ class Bandcontroller extends Controller
     {
 
         $band = Band ::find($id);
-        return view('Band_View.detail', ['id' => $band[$id]], compact('band'));
+        return view('Band_View.detail', ['band' => $band]);
     }
 
     /**

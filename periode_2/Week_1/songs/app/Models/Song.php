@@ -16,4 +16,9 @@ class Song extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function albums()
+    {
+        return $this->belongsToMany(Album::class);
+    }
 }

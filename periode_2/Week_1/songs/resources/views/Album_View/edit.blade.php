@@ -37,9 +37,39 @@
             <label for="founded" class="headerMakeup">Times sold :</label>
             <input type="text" class="form-control txtMakeup    border border-solid border-gray-300" name="times_sold" value="{{ $album->times_sold }}"/>
         </div>
+        <br>
        
         <button type="submit" class="btn btn-blue">Update album</button>
       </form>
+      <div>
+            <!-- gekoppelde songs -->
+            @foreach($album->songs as $song)
+            {{$song->song_name}}
+            <form action="{{ route('albums.detach', [$album, $song]) }}" method="POST">
+              @csrf
+              <button type="submit" class="btn btn-blue">
+                 - 
+              </button>
+            </form>
+            <br>
+            @endforeach
+          </div>
+      
+          <div>
+            <!-- ongekoppelde songs -->
+            @foreach($songs as $song)
+            {{$song->song_name}}
+            <form action="{{ route('albums.attach', [$album, $song]) }}" method="POST">
+              @csrf
+              <button type="submit" class="btn btn-blue"> 
+                + 
+              </button>
+            </form>
+            <br>
+            @endforeach
+          </div>
+      
+
   </div>
 </div>
 @endsection

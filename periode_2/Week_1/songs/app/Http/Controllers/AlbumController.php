@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Album;
+use App\Models\Band;
+use App\Models\Song;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class Albumcontroller extends Controller
 {
@@ -27,7 +30,9 @@ class Albumcontroller extends Controller
      */
     public function create()
     {
-        return view('Album_View.create');
+        $bands = Band::all();
+        return view('Album_View.create',['bands'=>$bands]);
+       
     }
 
     /**
@@ -43,8 +48,10 @@ class Albumcontroller extends Controller
             'album_name'=>'required|max:25',
             'year'=>'required|nullable',
             'times_sold'=>'required|max:4|',
+            'band_id'=>'required'
        
         ]);
+
         // Getting values from the  formss
         $input = new Album([
             'album_name' => $request->get('album_name'),
@@ -52,6 +59,10 @@ class Albumcontroller extends Controller
             'times_sold' => $request->get('times_sold'),
         
         ]);
+        //gets band by id which is selected from the dropdown
+        $band = Band ::find($request->get('band_id'));
+        //associates band with album(relation)
+        $input->band()->associate($band);
         $input->save();
         return redirect('/albums')->with('success', 'album saved.');   
     }
@@ -77,10 +88,22 @@ class Albumcontroller extends Controller
      */
     public function edit(Album $album)
     {
-        // $band = Band::find($id);
-        return view('Album_View.edit', ['album' => $album]);
+        $songs = Song::wheredoesntHave('albums', function ($query) use ($album) {
+            $query->where('album_id', $album->id);  })->get();
+        return view('Album_View.edit', ['album' => $album, 'songs' => $songs] );
+   
     }
-
+    public function attach(Album $album, Song $song )
+    {
+        $album->songs()->attach($song);
+        return redirect()->route('albums.edit', $album);
+    }
+    public function detach(Album $album, Song $song)
+    {
+        $album->songs()->detach($song);
+        return redirect()->route('albums.edit', $album);
+      
+    }
     /**
      * Update the specified resource in storage.
      *

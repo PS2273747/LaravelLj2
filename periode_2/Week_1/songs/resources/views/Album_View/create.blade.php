@@ -35,7 +35,16 @@
             <label for="author">Times sold :</label>
             <input type="text" class="form-control" name="times_sold"/>
         </div>
-     
+        <div class="form-group">
+            <label for="band">Band:</label>
+            <select name="band_id">
+             
+                @foreach($bands as $band)
+                <option value="{{$band->id}}"> {{$band->band_name}} </option>
+                @endforeach
+               
+            </select>
+        </div>
         <button type="submit"class="btn btn-blue">Create Album</button>
       </form>
   </div>

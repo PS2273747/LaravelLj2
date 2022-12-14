@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.btn {
+    @apply font-bold py-2 px-4 rounded;
+}
+
+.btn-blue {
+    @apply bg-blue-500 text-white;
+}
+
+.btn-grey {
+    @apply bg-gray-500 text-white;
+}
+
+.btn-darkgrey {
+    @apply bg-gray-800 text-white;
+}
+
+.btn-purple {
+    @apply bg-purple-500 text-white;
+}
+
+.btn-purple:hover {
+    @apply bg-purple-700;
+}
+
+.btn-blue:hover {
+    @apply bg-blue-700;
+}
+
+.center {
+    @apply text-center;
+}
+
+.txtMakeup {
+    @apply text-purple-700;
+    @apply font-bold;
+}
+
+.txtMakeupDash {
+    @apply text-gray-600;
+    @apply font-bold;
+}
+
+.headerMakeup {
+    @apply text-blue-700;
+    @apply font-bold;
+}
+
+.headerMakeupDash {
+    @apply text-gray-600;
+    @apply font-bold;
+}

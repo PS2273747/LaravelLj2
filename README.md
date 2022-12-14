@@ -3,8 +3,9 @@
 **Git handleiding**
 
 - ``` git add . ```
-- ``` git push ```
 - ``` git commit -m "een message" ```
+- ``` git push ```
+
 
 <sup> *Do this from the root map of Laravel Git or stuff will go fucky wucky </sup>
 

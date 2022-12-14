@@ -6,10 +6,11 @@ use App\Models\Album;
 use App\Models\Band;
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Songcontroller extends Controller
 {
-      /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -18,7 +19,7 @@ class Songcontroller extends Controller
     {
         $this->middleware('auth')->except('index');
     }
-    
+
     public function index()
     {
         // gets songs from the Model and shows only the titles
@@ -31,10 +32,36 @@ class Songcontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('Song_View.create');
-       
+        // The code is defining an empty array called $songsFromAPI
+        $songsFromAPI = [];
+
+        // it checks if the title query parameter is present in the request
+        if ($request->query->has('title')) {
+            
+               // the code sets  $api_key  to a given value 
+            $api_key = '6b4fe43c2ad4c5b83019e380ac5a61c1';
+
+            // the code assigns the value of the title query parameter to  $title 
+            $title = $request->query('title');
+
+            // send a GET request to the API with $title to search for the track  
+            $response = Http::get(
+                'http://ws.audioscrobbler.com/2.0/?method=track.search&track=' .
+                    $title . '&api_key=' . $api_key . '&format=json'
+            )->json();
+
+            // Get results from $response and save it into $songsFromAPI
+            $songsFromAPI = $response["results"]["trackmatches"]["track"];
+        }
+        $API = collect($songsFromAPI)->map(function ($song) {
+            return [
+                'song_name' => $song['name'],
+                'singer_name' => $song['artist'],
+            ];
+        });
+        return view('Song_View.create',['songsFromAPI' => $API]);
     }
 
     /**
@@ -45,11 +72,11 @@ class Songcontroller extends Controller
      */
     public function store(Request $request)
     {
-          // Validation for required fields
-          $request->validate([
-            'song_name'=>'required|',
-            'singer_name'=>'required',
-           
+        // Validation for required fields
+        $request->validate([
+            'song_name' => 'required|',
+            'singer_name' => 'required',
+
         ]);
         // Getting values from the  formss
         $input = new Song([
@@ -58,7 +85,7 @@ class Songcontroller extends Controller
 
         ]);
         $input->save();
-        return redirect('/songs')->with('success', 'song saved.');   
+        return redirect('/songs')->with('success', 'song saved.');
     }
 
     /**
@@ -70,7 +97,7 @@ class Songcontroller extends Controller
     public function show($id)
     {
 
-        $song = Song ::find($id);
+        $song = Song::find($id);
         return view('Song_View.detail', ['id' => $song[$id]], compact('song'));
     }
 
@@ -83,20 +110,19 @@ class Songcontroller extends Controller
     public function edit(Song $song)
     {
         $albums = Album::wheredoesntHave('songs', function ($query) use ($song) {
-            $query->where('song_id', $song->id);  })->get();
-        return view('Song_View.edit', ['song' => $song, 'albums' => $albums] );
-   
+            $query->where('song_id', $song->id);
+        })->get();
+        return view('Song_View.edit', ['song' => $song, 'albums' => $albums]);
     }
-    public function attach(Song $song, Album $album )
+    public function attach(Song $song, Album $album)
     {
         $song->albums()->attach($album);
         return redirect()->route('songs.edit', $song);
     }
-    public function detach(Song $song, Album $album )
+    public function detach(Song $song, Album $album)
     {
         $song->albums()->detach($album);
         return redirect()->route('songs.edit', $song);
-      
     }
 
     /**
@@ -109,15 +135,15 @@ class Songcontroller extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'song_name'=>'required|',
-            'singer_name'=>'required',
-           
+            'song_name' => 'required|',
+            'singer_name' => 'required',
+
         ]);
 
         $song = Song::find($id);
         $song->song_name = $request->get('song_name');
         $song->singer_name = $request->get('singer_name');
-      
+
         $song->save();
 
         return redirect('/songs')
@@ -132,12 +158,10 @@ class Songcontroller extends Controller
      */
     public function destroy(Song $song)
     {
-    
+
         $song->delete();
 
         return redirect('/songs')
             ->with('success', 'Song deleted successfully');
     }
-
- 
 }
